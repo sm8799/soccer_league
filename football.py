@@ -8,13 +8,13 @@ pygame.init() # initialize pygame
 pygame.font.init()
 pygame.mixer.init()
 clock = pygame.time.Clock()
-bg = pygame.image.load('2.png')
-back = pygame.image.load('fs.png')
-p1 = pygame.image.load('7.jpeg')
-gk1 = pygame.image.load('7.jpeg')
-p2 = pygame.image.load('8.jpeg')
-gk2 = pygame.image.load('8.jpeg')
-b = pygame.image.load('9.gif')
+bg = pygame.image.load('images/2.png')
+back = pygame.image.load('images/fs.png')
+p1 = pygame.image.load('images/7.jpeg')
+gk1 = pygame.image.load('images/7.jpeg')
+p2 = pygame.image.load('images/8.jpeg')
+gk2 = pygame.image.load('images/8.jpeg')
+b = pygame.image.load('images/9.gif')
 bg_size = bg.get_size()
 gk2_rect = gk2.get_rect()
 gk1_rect = gk1.get_rect()
@@ -115,12 +115,12 @@ def goal(score,x,y,t):
 	global control, collected_gk1, collected_gk2, move_x, move_y, b_rect, p1_rect, p2_rect
 	global img_1, kick, p1_x, p1_y, b_x, b_y, p2_x, p2_y, dim_x1, dim_x2, dim_y1, dim_y2, g2_x, g2_y
 	arg = 0
-	pygame.mixer.music.load('whistle.wav')
+	pygame.mixer.music.load('sounds/whistle.wav')
 	pygame.mixer.music.play(1)
 	score = 0
 	x = str(x)
 	y = str(y)
-	scored = pygame.image.load('3.png')
+	scored = pygame.image.load('images/3.png')
 	font = pygame.font.Font('freesansbold.ttf', 32)
 	text = font.render('RED : BLUE', True, red)
 	board = font.render(y+' : '+x, True, red)
@@ -210,7 +210,7 @@ def move_p2_penalty(b_x, b_y, p2_x, p2_y):
 def penaltygoal(x, y) :
 	k1 = str(x)
 	k2 = str(y)
-	scored = pygame.image.load('3.png')
+	scored = pygame.image.load('images/3.png')
 	font = pygame.font.Font('freesansbold.ttf', 32)
 	text = font.render('RED : BLUE', True, red)
 	board = font.render(k1+' : '+k2, True, red)
@@ -230,7 +230,7 @@ def penaltygoal(x, y) :
 
 def gameover1(x,y):
 	global pk
-	pygame.mixer.music.load('whistle.wav')
+	pygame.mixer.music.load('sounds/whistle.wav')
 	pygame.mixer.music.play(1)
 	game = pygame.font.Font('freesansbold.ttf', 60)
 	if y < x :
@@ -262,7 +262,7 @@ def gameover1(x,y):
 	
 def gameover(x,y):
 	global pk
-	pygame.mixer.music.load('whistle.wav')
+	pygame.mixer.music.load('sounds/whistle.wav')
 	pygame.mixer.music.play(1)
 	game = pygame.font.Font('freesansbold.ttf', 60)
 	if y < x :
@@ -433,7 +433,7 @@ def gamereload2(b_x, b_y, p1_x, p1_y, p2_x, p2_y):
 	return b_x, b_y, p1_x, p1_y, p2_x, p2_y
 	
 def penaltyshoot() :
-	pygame.mixer.music.load('crowd.wav')
+	pygame.mixer.music.load('sounds/crowd.wav')
 	pygame.mixer.music.play(-1)
 	global you_g, cpu_g, gk1, gk1_x, gk1_y, gk2, gk2_x, gk2_y, gk1_rect, gk2_rect, pk
 	global control, collected_gk1, collected_gk2, move_x, move_y, b_rect, p1_rect, p2_rect
@@ -445,7 +445,7 @@ def penaltyshoot() :
 	collected_gk1 = 0 
 	collected_gk2 = 0
 	pk = 0
-	disp = pygame.image.load('11.jpg')
+	disp = pygame.image.load('images/11.jpg')
 	disp_rect = disp.get_rect()
 	disp_rect.center = 498, 307
 	b_rect.center = b_x,b_y
@@ -616,7 +616,7 @@ def penaltyshoot() :
 
 def football(score = 0,t = 0):
     screen.fill((0, 0, 0))
-    pygame.mixer.music.load('crowd.wav')
+    pygame.mixer.music.load('sounds/crowd.wav')
     pygame.mixer.music.play(-1)
     global you_g, cpu_g, gk1, gk1_x, gk1_y, gk2, gk2_x, gk2_y, gk1_rect, gk2_rect
     global control, collected_gk1, collected_gk2, move_x, move_y, b_rect, p1_rect, p2_rect
@@ -755,7 +755,7 @@ def football(score = 0,t = 0):
         	pygame.display.update()
         	b_x, b_y, p1_x, p1_y, p2_x, p2_y = gamereload1(b_x, b_y, p1_x, p1_y, p2_x, p2_y, p1_rect, p2_rect, b_rect)
         	collected_gk1 = 0
-        	pygame.mixer.music.load('crowd.wav')
+        	pygame.mixer.music.load('sounds/crowd.wav')
         	pygame.mixer.music.play(-1)
         	
         elif collected_gk2 == 1 :
@@ -779,7 +779,7 @@ def football(score = 0,t = 0):
         	pygame.display.update()
         	b_x, b_y, p1_x, p1_y, p2_x, p2_y = gamereload2(b_x, b_y, p1_x, p1_y, p2_x, p2_y)
         	collected_gk2 = 0
-        	pygame.mixer.music.load('crowd.wav')
+        	pygame.mixer.music.load('sounds/crowd.wav')
         	pygame.mixer.music.play(-1)
         	
         if(((b_x < 27 ) or (b_x > 975)) and  b_y < 395 and b_y > 229):
@@ -824,7 +824,7 @@ def button(msg,x,y,w,h,ic,ac,action=None):
     
     
 def how_to_play():
-	control = pygame.image.load('controls.jpeg')
+	control = pygame.image.load('images/controls.jpeg')
 	control_rect = control.get_rect()
 	control_rect.center = 500, 250
 	screen.blit(control, control_rect)
@@ -842,7 +842,7 @@ def end():
 
 def start(play):
 	t = 0
-	pygame.mixer.music.load('ipl.wav')
+	pygame.mixer.music.load('sounds/ipl.wav')
 	pygame.mixer.music.play(1)
 	while play :
 		clock.tick(15)
